@@ -1,4 +1,4 @@
-function convertDegrees() {
+(function convertDegrees() {
     let degree = document.querySelector('#input1')
     let result = document.querySelector('.result')
     const warn = document.querySelector('.warn')
@@ -23,18 +23,23 @@ function convertDegrees() {
     function transformDegree(degree) {
         let celsius
         let fahrenheit
+        let kelvin
         let convertedDegree
 
         if (degree.includes('c') || degree.includes('C')) {
             celsius = degree.toUpperCase()
-            convertedDegree = convertToFahrenheit(celsius)
+            convertedDegree = fahrenheitKelvin(celsius)
 
         } else if (degree.includes('f') || degree.includes('F')) {
             fahrenheit = degree.toUpperCase()
-            convertedDegree = convertToCelsius(fahrenheit)
+            convertedDegree = celsiusKelvin(fahrenheit)
+
+        } else if (degree.includes('k') || degree.includes('K')) {
+            kelvin = degree.toUpperCase()
+            convertedDegree = celsiusFahrenheit(kelvin)
 
         } else if (degree === "") {
-             warn.innerHTML = `Temperature field cannot be empty`
+            warn.innerHTML = `"Temperature" field cannot be empty`
             return
 
         } else {
@@ -45,18 +50,29 @@ function convertDegrees() {
         return result.innerHTML = convertedDegree
     }
 
-    function convertToFahrenheit(temp) {
+    function fahrenheitKelvin(temp) {
         let temperature = Number(temp.replace("C", ""))
-        let toCelsius = temperature * 9 / 5 + 32
-        return `${toCelsius.toFixed(2)}ºF`
+        let toFahrenheit = temperature * 9 / 5 + 32
+        let toCelsius = (toFahrenheit - 32) * 5 / 9
+        let toKelvin = toCelsius + 273.15
+        return `${toFahrenheit.toFixed(2)} ºF
+            <br>  ${toKelvin.toFixed(2)} k`
     }
 
-    function convertToCelsius(temp) {
+    function celsiusKelvin(temp) {
         let temperature = Number(temp.replace("F", ""))
-        let toFahrenheit =(temperature - 32) * 5 / 9
-        return `${toFahrenheit.toFixed(2)}ºC`
+        let toCelsius = (temperature - 32) * 5 / 9
+        let toKelvin = toCelsius + 273.15
+        return `${toCelsius.toFixed(2)} ºC
+        <br>  ${toKelvin.toFixed(2)} k`
     }
 
-}
+    function celsiusFahrenheit(temp) {
+        let temperature = Number(temp.replace("K", ""))
+        let toCelsius = temperature - 273.15
+        let toFahrenheit = toCelsius * 9 / 5 + 32
+        return `${toCelsius.toFixed(2)} ºC
+        <br> ${toFahrenheit.toFixed(2)} ºF`
+    }
 
-convertDegrees()
+})()
