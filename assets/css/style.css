@@ -9,7 +9,7 @@
 /*Body =================================*/
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 
 /*Header ================================*/
@@ -21,7 +21,7 @@ main {
   background-image: url("/assets/img/backgroung.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center center;
 }
 
 header {
@@ -73,7 +73,7 @@ section button {
   font-size: 11px;
   text-align: center;
   margin-bottom: 1rem;
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
 /*Inputs & Button ===============================*/
