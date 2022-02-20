@@ -56,7 +56,7 @@
         let toCelsius = (toFahrenheit - 32) * 5 / 9
         let toKelvin = toCelsius + 273.15
         return `${toFahrenheit.toFixed(2)} ºF
-            <br>  ${toKelvin.toFixed(2)} k`
+            <br>  ${toKelvin.toFixed(2)} K`
     }
 
     function celsiusKelvin(temp) {
@@ -64,7 +64,7 @@
         let toCelsius = (temperature - 32) * 5 / 9
         let toKelvin = toCelsius + 273.15
         return `${toCelsius.toFixed(2)} ºC
-        <br>  ${toKelvin.toFixed(2)} k`
+        <br>  ${toKelvin.toFixed(2)} K`
     }
 
     function celsiusFahrenheit(temp) {
